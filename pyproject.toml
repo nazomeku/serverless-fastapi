@@ -1,0 +1,30 @@
+[tool.mypy]
+strict = true
+disallow_any_unimported = true
+
+[[tool.mypy.overrides]]
+module = ["pulumi_azure_native.*"]
+follow_imports = "skip"
+
+[tool.ruff]
+line-length = 99
+target-version = "py311"
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = ["ANN", "D"]
+
+[tool.ruff.lint.flake8-quotes]
+docstring-quotes = "double"
+inline-quotes = "single"
+multiline-quotes = "double"
+
+[tool.ruff.lint.isort]
+force-sort-within-sections = true
+lines-after-imports = 2
+order-by-type = false
+case-sensitive = false
+known-first-party = ["endpoints"]
