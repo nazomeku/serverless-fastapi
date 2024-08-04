@@ -91,6 +91,9 @@ function_app = web.WebApp(
     ),
 )
 
+# don't like that but couldn't find a better way
+# there is some weird behavior with the `local.Command` and `depends_on` set to `function_app`
+# that results in function name not being found while deploying with func azure command
 function_creation_delay = Sleep(
     'FunctionCreationDelay',
     create_duration='15s',
