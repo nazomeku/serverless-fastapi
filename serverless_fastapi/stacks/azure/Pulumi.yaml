@@ -1,6 +1,5 @@
 name: serverless-fastapi
 runtime:
   name: python
-
 config:
   azure-native:location: swedencentral
