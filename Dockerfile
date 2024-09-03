@@ -10,7 +10,7 @@ COPY . /app
 RUN uv pip compile pyproject.toml --output-file requirements.txt --quiet && \
     uv pip install --system --no-cache -r requirements.txt
 
-# Install required tools
+# Install required system tools
 RUN apt-get update && \
     apt-get install -y --no-install-recommends curl
 
