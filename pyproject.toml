@@ -1,3 +1,19 @@
+[project]
+name = "serverless-fastapi"
+version = "0.1.0"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "azure-functions==1.20.0",
+    "fastapi==0.111.0",
+    "pulumi-azure-native==2.51.0",
+    "pulumi-command==1.0.1",
+    "pulumi-random==4.16.3",
+    "pulumi==3.127.0",
+    "pulumiverse-time==0.0.17",
+    "pydantic==2.8.2",
+]
+
 [tool.mypy]
 strict = true
 disallow_any_unimported = true
@@ -28,3 +44,10 @@ lines-after-imports = 2
 order-by-type = false
 case-sensitive = false
 known-first-party = ["endpoints"]
+
+[tool.uv]
+dev-dependencies = [
+    "mypy==1.10.1",
+    "pre-commit==3.7.1",
+    "ruff==0.5.0",
+]
