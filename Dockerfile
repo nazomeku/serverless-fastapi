@@ -1,16 +1,21 @@
 FROM python:3.11-slim
 
+COPY --from=ghcr.io/astral-sh/uv:0.4.3 /uv /bin/uv
+
 WORKDIR /app
 
 COPY . /app
 
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
+# Install project dependencies
+RUN uv pip compile pyproject.toml --output-file requirements.txt --quiet && \
+    uv pip install --system --no-cache -r requirements.txt
+
+# Install required system tools
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends curl
 
 # Install Azure CLI
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends curl && \
-    curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 
 # Install Azure Functions Core Tools
 RUN curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/microsoft.asc.gpg > /dev/null && \

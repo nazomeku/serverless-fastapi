@@ -46,11 +46,11 @@ This will require some additional tools and configuration.
 
 ### Local development
 
-To check the application locally create a Python virtual environment and install the project dependencies:
+To check the application locally, you can install the dependencies with package manager eg. [uv](https://github.com/astral-sh/uv):
 
 ```bash
-$ pip install --upgrade pip
-$ pip install -r requirements-dev.txt
+$ uv sync
+$ source .venv/bin/activate
 ```
 
 You can run the code quality checks with a single command:
